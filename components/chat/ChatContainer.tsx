@@ -6,6 +6,7 @@ import { ChatMessages } from "./ChatMessages";
 import { ChatInput } from "./ChatInput";
 import { ChatControls } from "./ChatControls";
 import { generateChatCompletion } from "@/lib/aiml";
+import { AI_PERSONALITY } from "@/lib/config";
 
 export function ChatContainer() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -15,6 +16,16 @@ export function ChatContainer() {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  useEffect(() => {
+    // Add introduction message when component mounts
+    setMessages([{
+      id: "intro",
+      role: "assistant",
+      content: AI_PERSONALITY.introduction,
+      timestamp: new Date(),
+    }]);
+  }, []);
 
   useEffect(() => {
     scrollToBottom();

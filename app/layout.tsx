@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AMR AI Chat",
+  title: "Amr Dawoodi",
   description: "A modern AI chat interface",
 };
 
